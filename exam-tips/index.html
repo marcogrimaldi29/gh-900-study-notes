@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Tips &amp; Caveats | GH-900 Study Notes</title>
+  <meta name="description" content="GH-900 exam strategy: format, logistics, high-yield facts, common traps, and a study plan for the GitHub Foundations certification.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>&#x1F419;</text></svg>">
+</head>
+<body>
+
+  <div class="bg-animation">
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+  </div>
+  <div class="code-rain"></div>
+
+  <header class="site-header">
+    <a href="../" class="header-logo">
+      <img src="../assets/images/teal-sunset-no-bg.png" alt="GH-900 Study Notes logo">
+      <span class="logo-text">GH-900 <span class="muted">Study Notes</span></span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <nav class="header-nav">
+      <a class="star-btn" href="https://github.com/marcogrimaldi29/gh-900-study-notes" target="_blank" rel="noopener" title="Star this repo on GitHub">
+        <span class="star-emoji">&#11088;</span>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+        <span class="star-label">Star</span>
+      </a>
+    </nav>
+  </header>
+
+  <div class="sidebar-overlay"></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Overview</div>
+      <a href="../" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Z"/></svg>
+        Home
+      </a>
+      <a href="../exam-tips/" class="sidebar-link active"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75ZM5.75 12a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5h-4.5Z"/></svg>
+        Exam Tips &amp; Caveats
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Skills Measured</div>
+      <a href="../git-github-basics/" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Zm-6 0a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Zm8.25-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM4.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"/></svg>
+        Git &amp; GitHub Basics
+        <span class="badge">25-30%</span>
+      </a>
+      <a href="../repositories/" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></svg>
+        GitHub Repositories
+        <span class="badge">10-15%</span>
+      </a>
+      <a href="../collaboration/" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"/></svg>
+        Collaboration
+        <span class="badge">10-15%</span>
+      </a>
+      <a href="../modern-development/" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M14.064 0h.186C15.216 0 16 .784 16 1.75v.186a8.752 8.752 0 0 1-2.564 6.186l-.458.459c-.314.314-.641.616-.979.904v3.207c0 .608-.315 1.172-.833 1.49l-2.774 1.707a.749.749 0 0 1-1.11-.418l-.954-3.102a1.214 1.214 0 0 1-.145-.125L3.443 9.32a1.253 1.253 0 0 1-.125-.145L.216 8.221a.749.749 0 0 1-.418-1.11l1.707-2.774A1.748 1.748 0 0 1 2.995 3.5h3.207c.288-.338.59-.665.904-.979l.459-.458A8.749 8.749 0 0 1 14.064 0ZM8.938 3.623h-.002l-.458.458c-.76.76-1.437 1.598-2.02 2.5l-1.5 2.317 2.143 2.143 2.317-1.5c.902-.583 1.74-1.26 2.499-2.02l.459-.458a7.25 7.25 0 0 0 2.123-5.126v-.186a.25.25 0 0 0-.25-.25h-.186a7.249 7.249 0 0 0-5.125 2.123ZM3.56 14.56c-.732.732-2.334 1.045-3.005 1.148a.219.219 0 0 1-.244-.244c.103-.671.416-2.273 1.148-3.005a1.436 1.436 0 1 1 2.031 2.03Zm9.24-8.617a1.5 1.5 0 1 0-2.999-.001 1.5 1.5 0 0 0 3 .001Z"/></svg>
+        Modern Development
+        <span class="badge">10-15%</span>
+      </a>
+      <a href="../project-management/" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25ZM11.75 3a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Zm-8.25.75a.75.75 0 0 1 1.5 0v5.5a.75.75 0 0 1-1.5 0ZM8 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 3Z"/></svg>
+        Project Management
+        <span class="badge">5-10%</span>
+      </a>
+      <a href="../security-administration/" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667Zm.61 1.429a.25.25 0 0 0-.153 0l-5.25 1.68a.25.25 0 0 0-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.196.196 0 0 0 .154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.251.251 0 0 0-.174-.237l-5.25-1.68ZM8.75 4.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0ZM9 10.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
+        Privacy, Security &amp; Admin
+        <span class="badge">10-15%</span>
+      </a>
+      <a href="../github-community/" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.565 20.565 0 0 0 8 13.393a20.561 20.561 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5ZM8 14.25l-.345.666-.002-.001-.006-.003-.018-.01a7.643 7.643 0 0 1-.31-.17 22.075 22.075 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.08 22.08 0 0 1-3.744 2.584l-.018.01-.006.003h-.002L8 14.25Z"/></svg>
+        GitHub Community
+        <span class="badge">5-10%</span>
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Resources</div>
+      <a href="https://learn.microsoft.com/en-us/credentials/certifications/github-foundations/?practice-assessment-type=certification" class="sidebar-link" target="_blank" rel="noopener"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg>
+        Official Certification
+      </a>
+      <a href="https://ghcertified.com/en" class="sidebar-link" target="_blank" rel="noopener"><svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"/></svg>
+        GH Certified (Practice)
+      </a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../">Home</a>
+      <span class="sep">/</span>
+      <span>Exam Tips &amp; Caveats</span>
+    </div>
+
+    <h1>Exam Tips &amp; Caveats</h1>
+    <p class="lead">Format, logistics, high-yield facts, common traps, and a study plan to pass <strong>GH-900: GitHub Foundations</strong>. Use this alongside the seven skill-area pages — this page is strategy, not a substitute for the content.</p>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> These are personal study notes for learning purposes only. They contain <strong>no recalled exam questions</strong>. Always verify against the <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900" target="_blank" rel="noopener">official study guide</a>.
+    </div>
+
+    <nav class="page-toc">
+      <h4>On This Page</h4>
+      <ul>
+        <li><a href="#logistics">Exam Logistics</a></li>
+        <li><a href="#weights">Domain Weights</a></li>
+        <li><a href="#high-yield">High-Yield Facts</a></li>
+        <li><a href="#traps">Common Traps &amp; Distinctions</a></li>
+        <li><a href="#plan">A 2-Week Study Plan</a></li>
+        <li><a href="#day-of">Day-of Strategy</a></li>
+        <li><a href="#resources">Study Resources</a></li>
+      </ul>
+    </nav>
+
+    <h2 id="logistics">Exam Logistics</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-value">GH-900</div><div class="stat-label">Exam Code</div></div>
+      <div class="stat-card"><div class="stat-value">100</div><div class="stat-label">Minutes</div></div>
+      <div class="stat-card"><div class="stat-value">700</div><div class="stat-label">Passing Score</div></div>
+      <div class="stat-card"><div class="stat-value">$99</div><div class="stat-label">USD Price</div></div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-title">&#9432; What to Expect</div>
+      <p>GH-900 is a <strong>proctored, multiple-choice</strong> exam aimed at <strong>non-developers, developers, and all GitHub users</strong> — no coding is required. A score of <strong>700 or greater</strong> (scale to 1000) passes. Explore the interface first with the <a href="https://aka.ms/examdemo" target="_blank" rel="noopener">exam sandbox</a> and try the free <a href="https://learn.microsoft.com/en-us/credentials/certifications/github-foundations/?practice-assessment-type=certification" target="_blank" rel="noopener">practice assessment</a>. If the exam isn't offered in your language, request an extra 30 minutes.</p>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-title">&#9888; The Exam Changed in January 2026</div>
+      <p>Objectives were <strong>added, removed, reworded, and reorganized</strong> in January 2026. Older prep material (and dumps) may reference the previous domain structure. These notes track the current <strong>seven-domain</strong> version. Trust the <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900" target="_blank" rel="noopener">official study guide</a> and its change log above all else.</p>
+    </div>
+
+    <h2 id="weights">Domain Weights</h2>
+    <table>
+      <thead><tr><th>Skill Area</th><th>Weight</th></tr></thead>
+      <tbody>
+        <tr><td><a href="../git-github-basics/">Understand Git &amp; GitHub basics</a></td><td><strong>25&ndash;30%</strong></td></tr>
+        <tr><td><a href="../repositories/">Work with GitHub repositories</a></td><td>10&ndash;15%</td></tr>
+        <tr><td><a href="../collaboration/">Collaborate using GitHub</a></td><td>10&ndash;15%</td></tr>
+        <tr><td><a href="../modern-development/">Apply modern development practices</a></td><td>10&ndash;15%</td></tr>
+        <tr><td><a href="../project-management/">Manage projects with GitHub</a></td><td>5&ndash;10%</td></tr>
+        <tr><td><a href="../security-administration/">Understand privacy, security &amp; administration</a></td><td>10&ndash;15%</td></tr>
+        <tr><td><a href="../github-community/">Explore the GitHub community</a></td><td>5&ndash;10%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout tip">
+      <div class="callout-title">&#128161; Where to Spend Your Time</div>
+      <p><strong>Git &amp; GitHub basics is the single biggest domain (25&ndash;30%).</strong> Master version control concepts, Git vs. GitHub, and the GitHub Flow first — it pays off the most. The three 10&ndash;15% domains (repositories, collaboration, modern development, security) together dominate the rest.</p>
+    </div>
+
+    <h2 id="high-yield">High-Yield Facts</h2>
+    <div class="skill-section">
+      <ul>
+        <li><strong>Git</strong> = distributed VCS on your machine; <strong>GitHub</strong> = cloud host for Git repos. Git works offline; GitHub doesn't.</li>
+        <li><strong>GitHub Flow order:</strong> branch &rarr; commit &rarr; open PR &rarr; review &rarr; merge &rarr; delete branch.</li>
+        <li><strong>Clone</strong> = local copy; <strong>Fork</strong> = your copy on GitHub (used to contribute upstream).</li>
+        <li><strong>CODEOWNERS</strong> auto-requests reviewers when owned files change.</li>
+        <li><strong>Closing keywords</strong> (fixes/closes/resolves&nbsp;#N) link and auto-close an issue when a PR merges to the default branch.</li>
+        <li><strong>Star</strong> = bookmark; <strong>Watch</strong> = notifications; <strong>Follow</strong> = a person's activity in your feed.</li>
+        <li><strong>Template</strong> repo = fresh start, no history; <strong>Fork</strong> = keeps history, linked upstream.</li>
+        <li><strong>Actions</strong> = event-driven YAML workflows (jobs &rarr; steps &rarr; actions on runners) for CI/CD and automation.</li>
+        <li><strong>github.dev</strong> = free lightweight editor, no terminal; <strong>Codespaces</strong> = full cloud dev environment that can run code.</li>
+        <li><strong>Copilot plans:</strong> Individual (one dev) &rarr; Business (org policy/license management) &rarr; Enterprise (deep GitHub.com integration).</li>
+        <li><strong>Repo visibility:</strong> Public (everyone), Private (invited), Internal (all enterprise members &rarr; InnerSource).</li>
+        <li><strong>Branch protection</strong> enforces reviews and passing checks before merge.</li>
+        <li><strong>Passkeys/security keys</strong> are the strongest auth; <strong>SMS</strong> is the weakest 2FA.</li>
+        <li><strong>EMUs</strong> are enterprise-provisioned accounts managed via an IdP (SSO + SCIM).</li>
+        <li><strong>Repo roles</strong> (low&rarr;high): Read, Triage, Write, Maintain, Admin.</li>
+        <li><strong>Projects layouts:</strong> Table, Board, Roadmap. <strong>Milestones</strong> show a progress bar.</li>
+        <li><strong>Gist</strong> = snippet; <strong>Wiki</strong> = repo docs; <strong>Pages</strong> = published website.</li>
+      </ul>
+    </div>
+
+    <h2 id="traps">Common Traps &amp; Distinctions</h2>
+    <table>
+      <thead><tr><th>Don't confuse&hellip;</th><th>Key difference</th></tr></thead>
+      <tbody>
+        <tr><td>Git vs. GitHub</td><td>Tool vs. hosting platform.</td></tr>
+        <tr><td>Clone vs. Fork</td><td>Local copy vs. server-side copy under your account.</td></tr>
+        <tr><td>Fork vs. Template</td><td>Keeps history &amp; upstream link vs. clean, independent start.</td></tr>
+        <tr><td>Star vs. Watch vs. Follow</td><td>Bookmark vs. repo notifications vs. a user's feed activity.</td></tr>
+        <tr><td>Issue vs. Discussion</td><td>Trackable actionable work vs. open-ended conversation.</td></tr>
+        <tr><td>github.dev vs. Codespaces</td><td>Lightweight editor (no compute) vs. full cloud dev environment.</td></tr>
+        <tr><td>Copilot Business vs. Enterprise</td><td>Org policy/license management vs. deep GitHub.com integration.</td></tr>
+        <tr><td>Private vs. Internal repo</td><td>Explicitly invited people vs. all enterprise members (InnerSource).</td></tr>
+        <tr><td>Assignee vs. Reviewer</td><td>Who's responsible vs. who's asked to review.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="plan">A 2-Week Study Plan</h2>
+    <div class="skill-section">
+      <h4>Week 1 — Learn</h4>
+      <ul class="checklist">
+        <li>Complete <a href="https://learn.microsoft.com/en-us/training/paths/github-foundations/" target="_blank" rel="noopener">GitHub Foundations Part 1</a> (Git, repos, collaboration).</li>
+        <li>Complete <a href="https://learn.microsoft.com/en-us/training/paths/github-foundations-2/" target="_blank" rel="noopener">GitHub Foundations Part 2</a> (Actions, Codespaces, Copilot, security, community).</li>
+        <li>Do the <a href="https://skills.github.com/" target="_blank" rel="noopener">GitHub Skills</a> "Introduction to GitHub" hands-on course.</li>
+        <li>Create a repo, branch, open a PR, and merge it yourself — practice beats memorization.</li>
+      </ul>
+      <h4>Week 2 — Reinforce &amp; Test</h4>
+      <ul class="checklist">
+        <li>Read all seven skill-area pages on this site; focus on the tables and callouts.</li>
+        <li>Take the free <a href="https://learn.microsoft.com/en-us/credentials/certifications/github-foundations/?practice-assessment-type=certification" target="_blank" rel="noopener">Microsoft practice assessment</a>.</li>
+        <li>Practice with <a href="https://ghcertified.com/en" target="_blank" rel="noopener">GH Certified</a> community questions.</li>
+        <li>Review the <a href="#high-yield">High-Yield Facts</a> and <a href="#traps">Common Traps</a> the day before.</li>
+        <li>Explore the <a href="https://aka.ms/examdemo" target="_blank" rel="noopener">exam sandbox</a> so the interface is familiar.</li>
+      </ul>
+    </div>
+
+    <h2 id="day-of">Day-of Strategy</h2>
+    <div class="skill-section">
+      <ul>
+        <li><strong>Read carefully</strong> — watch for "NOT," "BEST," and "MOST secure" qualifiers.</li>
+        <li><strong>Eliminate wrong answers</strong> — two options are usually clearly off; decide between the remaining two.</li>
+        <li><strong>Flag &amp; move on</strong> — don't burn time; mark tough items for review and return later.</li>
+        <li><strong>Scenario questions</strong> — map the situation to the right tool (e.g. "review from phone" &rarr; GitHub Mobile).</li>
+        <li>Answer <strong>every</strong> question — there's no penalty for guessing.</li>
+        <li>Mostly <strong>GA features</strong> are tested; <strong>Preview</strong> features may appear if commonly used.</li>
+      </ul>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-title">&#128161; After You Pass</div>
+      <p>Your certification and score report live in your <a href="https://learn.microsoft.com/en-us/users" target="_blank" rel="noopener">Microsoft Learn profile</a>. Add the badge to LinkedIn, and consider <strong>GH-500 (GitHub Advanced Security)</strong>, <strong>GH-200 (GitHub Actions)</strong>, or <strong>GH-300 (GitHub Copilot)</strong> as next steps.</p>
+    </div>
+
+    <h2 id="resources">Study Resources</h2>
+    <ul class="resource-list">
+      <li>
+        <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900" target="_blank" rel="noopener">Official GH-900 Study Guide</a>
+        <span class="resource-desc">The authoritative skills-measured list and change log — read it first and last.</span>
+      </li>
+      <li>
+        <a href="https://learn.microsoft.com/en-us/credentials/certifications/github-foundations/" target="_blank" rel="noopener">GitHub Foundations Certification Page</a>
+        <span class="resource-desc">How to schedule the exam, pricing, and details.</span>
+      </li>
+      <li>
+        <a href="https://learn.microsoft.com/en-us/collections/o1njfe825p602p" target="_blank" rel="noopener">GitHub Foundations Learning Collection</a>
+        <span class="resource-desc">Every aligned Microsoft Learn module in one collection.</span>
+      </li>
+      <li>
+        <a href="https://ghcertified.com/en" target="_blank" rel="noopener">GH Certified — Practice Questions</a>
+        <span class="resource-desc">Open-source community practice tests for GitHub Foundations.</span>
+      </li>
+      <li>
+        <a href="https://skills.github.com/" target="_blank" rel="noopener">GitHub Skills</a>
+        <span class="resource-desc">Free hands-on interactive courses inside real repositories.</span>
+      </li>
+    </ul>
+
+    <div class="page-nav">
+      <a href="../github-community/">
+        <span class="nav-label">&larr; Previous</span>
+        <span class="nav-title">Explore the GitHub Community</span>
+      </a>
+      <a href="../" class="next">
+        <span class="nav-label">Next &rarr;</span>
+        <span class="nav-title">Back to Home</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col footer-col-author">
+        <div class="author-card">
+          <img src="../assets/images/marcogrimaldi29.jpg" alt="Marco Grimaldi">
+          <div>
+            <span class="maintainer-badge">Maintainer</span>
+            <div class="ac-name">Marco Grimaldi</div>
+            <div class="ac-role">Cloud Solution Architect</div>
+          </div>
+        </div>
+        <div class="author-links">
+          <a href="https://github.com/marcogrimaldi29" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a>
+          <a href="https://www.linkedin.com/in/marco-grimaldi29/" target="_blank" rel="noopener">in LinkedIn</a>
+          <a href="https://marcogrimaldi29.com/" target="_blank" rel="noopener"><img src="../assets/images/teal-sunset-no-bg.png" alt="" width="14" height="14"> Website</a>
+        </div>
+        <div class="star-cta">&#11088; Found these notes helpful? <strong>Star the repo on GitHub</strong> to support the project and help others find it.</div>
+        <div class="contrib-note">&#129309; <strong>Open to collaboration.</strong> Contributions, corrections, and pull requests are welcome &mdash; see <a href="https://github.com/marcogrimaldi29/gh-900-study-notes/blob/main/.github/CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING.md</a> to get started.</div>
+      </div>
+      <div class="footer-col">
+        <h5>Skills Measured</h5>
+        <a href="../git-github-basics/">Git &amp; GitHub Basics</a>
+        <a href="../repositories/">GitHub Repositories</a>
+        <a href="../collaboration/">Collaboration</a>
+        <a href="../modern-development/">Modern Development</a>
+        <a href="../project-management/">Project Management</a>
+        <a href="../security-administration/">Privacy, Security &amp; Admin</a>
+        <a href="../github-community/">GitHub Community</a>
+        <a href="../exam-tips/">Exam Tips &amp; Caveats</a>
+      </div>
+      <div class="footer-col">
+        <h5>Official Resources</h5>
+        <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900" target="_blank" rel="noopener">GH-900 Study Guide</a>
+        <a href="https://learn.microsoft.com/en-us/credentials/certifications/github-foundations/" target="_blank" rel="noopener">Certification Page</a>
+        <a href="https://learn.microsoft.com/en-us/training/paths/github-foundations/" target="_blank" rel="noopener">Learning Path Part 1</a>
+        <a href="https://docs.github.com" target="_blank" rel="noopener">GitHub Docs</a>
+        <a href="https://ghcertified.com/en" target="_blank" rel="noopener">GH Certified (Practice)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Marco Grimaldi &middot; For study &amp; learning purposes only. Not affiliated with Microsoft or GitHub.</span>
+      <span>Always verify against the <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900" target="_blank" rel="noopener">official study guide</a>.</span>
+    </div>
+  </footer>
+
+  <a href="../" class="home-fab" aria-label="Home" title="Home">&#127968;</a>
+  <button class="back-to-top" aria-label="Back to top">&#128285;</button>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

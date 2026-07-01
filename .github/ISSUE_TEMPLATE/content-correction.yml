@@ -1,0 +1,52 @@
+name: Content Correction
+description: Report inaccurate, outdated, or unclear study content
+title: "[Content]: "
+labels: ["content", "correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep these study notes accurate! 🙏
+        Please fill in as much detail as you can so the correction can be applied quickly.
+
+  - type: input
+    id: page
+    attributes:
+      label: Page / Section
+      description: Which page and section is affected?
+      placeholder: "e.g. Git & GitHub Basics — GitHub Flow steps"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: What is currently written (or missing)?
+      description: Quote the text or describe what is missing.
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should it say?
+      description: Provide the correct information.
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Official source
+      description: Link to Microsoft Learn, GitHub Docs, or the GH-900 study guide that supports this correction.
+      placeholder: "https://docs.github.com/..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I checked this isn't already reported in another open issue.
+          required: true
+        - label: My correction is backed by an official source (or I've explained why no source is needed).
+          required: true
