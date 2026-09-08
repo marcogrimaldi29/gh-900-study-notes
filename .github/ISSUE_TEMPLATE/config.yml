@@ -1,8 +1,0 @@
-blank_issues_enabled: true
-contact_links:
-  - name: Official GH-900 Study Guide
-    url: https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900
-    about: Always verify content against the official Microsoft study guide before submitting a correction.
-  - name: GitHub Documentation
-    url: https://docs.github.com
-    about: The authoritative reference for all GitHub features, plans, and configuration.

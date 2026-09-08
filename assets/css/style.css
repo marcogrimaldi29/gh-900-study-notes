@@ -221,6 +221,7 @@ body {
   font-size: 14px;
   border-left: 2px solid transparent;
   transition: all .15s;
+  white-space: nowrap;
 }
 
 .sidebar-link:hover {
@@ -236,6 +237,7 @@ body {
 
 .sidebar-link .badge {
   margin-left: auto;
+  flex-shrink: 0;
   font-size: 11px;
   padding: 1px 7px;
   border-radius: 10px;
@@ -858,9 +860,10 @@ tr:hover td { background: rgba(88,166,255,.03); }
 
   .footer-bottom { flex-direction: column; }
 
-  .menu-toggle { display: block; }
+  /* Keep the Star button on the top bar; move the burger to the far right */
+  .menu-toggle { display: block; order: 3; }
 
-  .header-nav { display: none; }
+  .header-nav { order: 2; }
 
   .hero h1 { font-size: 28px; }
 

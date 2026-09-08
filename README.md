@@ -3,7 +3,6 @@
 > **Personal study companion for the GH-900 GitHub Foundations certification exam.**
 
 [![GitHub Pages](https://img.shields.io/badge/Live%20Site-GitHub%20Pages-blue?logo=github)](https://marcogrimaldi29.github.io/gh-900-study-notes/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
@@ -63,16 +62,11 @@ python -m http.server 8080
 # Then open http://localhost:8080/
 ```
 
-## Contributing
-
-Corrections, improvements, and pull requests are welcome — see **[CONTRIBUTING.md](.github/CONTRIBUTING.md)** for guidelines.
-
 ## Author
 
 **Marco Grimaldi** · Cloud Solution Architect  
 [github.com/marcogrimaldi29](https://github.com/marcogrimaldi29) · [LinkedIn](https://www.linkedin.com/in/marco-grimaldi29/) · [marcogrimaldi29.com](https://marcogrimaldi29.com)
 
-## License
+## Notes
 
-Site code (HTML, CSS, JS) is released under the [MIT License](LICENSE).  
 Study content is a personal summary derived from public Microsoft and GitHub documentation — always refer to the official sources linked throughout the notes.
