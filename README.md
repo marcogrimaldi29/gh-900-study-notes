@@ -48,20 +48,6 @@ exam-tips/
 index.html          — home page
 ```
 
-## Running Locally
-
-Pages use clean folder-style URLs (`/repositories/` → `repositories/index.html`), which require a local server to resolve properly (file:// won't work):
-
-```bash
-# Option A — Node (npx, no install required)
-npx http-server . -p 8080
-
-# Option B — Python
-python -m http.server 8080
-
-# Then open http://localhost:8080/
-```
-
 ## Author
 
 **Marco Grimaldi** · Cloud Solution Architect  
