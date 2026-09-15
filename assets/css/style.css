@@ -820,6 +820,16 @@ table {
   font-size: 14px;
 }
 
+/* Wide tables scroll horizontally inside their own container instead of
+   overflowing the page on narrow / not-full-size viewports. */
+.table-wrap {
+  margin: 16px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrap table { margin: 0; }
+
 th, td {
   padding: 10px 14px;
   text-align: left;
@@ -874,6 +884,9 @@ tr:hover td { background: rgba(88,166,255,.03); }
   .card-grid { grid-template-columns: 1fr; }
 
   .page-nav { flex-direction: column; }
+
+  /* Stacked: let Next stretch full-width like Previous (auto margin is cross-axis here) */
+  .page-nav .next { margin-left: 0; text-align: left; }
 }
 
 @media (max-width: 480px) {

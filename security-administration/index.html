@@ -133,7 +133,7 @@
 
     <h3 id="repo-roles">Repository Roles</h3>
     <p>Access to a repository is granted through roles, from least to most privileged:</p>
-    <table>
+    <div class="table-wrap"><table>
       <thead>
         <tr><th>Role</th><th>Typical capabilities</th></tr>
       </thead>
@@ -144,7 +144,7 @@
         <tr><td><strong>Maintain</strong></td><td>Write plus manage some repository settings (not sensitive/destructive ones).</td></tr>
         <tr><td><strong>Admin</strong></td><td>Full control — all settings, security, collaborators, and deletion.</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <h3 id="org-roles">Organization Roles</h3>
     <div class="skill-section">
@@ -175,14 +175,14 @@
     <h2 id="visibility">Repository Visibility &amp; Branch Protection</h2>
     <div class="skill-section">
       <h4>Visibility Options</h4>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Visibility</th><th>Who can see it</th></tr></thead>
         <tbody>
           <tr><td><strong>Public</strong></td><td>Anyone on the internet; ideal for open source.</td></tr>
           <tr><td><strong>Private</strong></td><td>Only you and people/teams you explicitly grant access.</td></tr>
           <tr><td><strong>Internal</strong></td><td>Visible to all members of the enterprise — the basis of <strong>InnerSource</strong>. Available in organizations owned by an enterprise.</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <h4>Branch Protection Rules</h4>
       <ul>
         <li>Protect important branches (like <code>main</code>) by <strong>requiring pull request reviews</strong> before merging, <strong>requiring status checks to pass</strong>, requiring signed commits, and <strong>restricting who can push</strong>.</li>
