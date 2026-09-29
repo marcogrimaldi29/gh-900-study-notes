@@ -786,8 +786,44 @@ pre code { background: none; padding: 0; }
 }
 
 .star-cta strong { color: var(--accent-orange); }
+.star-cta p { margin: 0 0 12px; line-height: 1.55; }
 
-.contrib-note {
+/* Buttons grow to fill their row, so however they wrap the rows end flush.
+   Same pairing as the support callout on marcogrimaldi29.com. */
+.support-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.support-actions a {
+  display: inline-flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background .18s, border-color .18s, box-shadow .18s, transform .18s;
+}
+
+.support-actions a:hover { text-decoration: none; transform: translateY(-1px); }
+.support-actions svg { width: 16px; height: 16px; flex: none; }
+
+.support-actions .support-star { background: var(--bg-tertiary); border-color: var(--border-default); color: var(--text-primary); }
+.support-actions .support-star:hover { background: var(--bg-card); border-color: var(--accent-blue); color: var(--text-primary); }
+
+/* LinkedIn's own blue in both themes, lightening on hover. */
+.support-actions .support-linkedin { background: #0a66c2; border-color: #0a66c2; color: #fff; }
+.support-actions .support-linkedin:hover { background: #1275d1; border-color: #1275d1; color: #fff; }
+
+/* Buy Me a Coffee's own brand colours, so the button reads as theirs; on hover
+   the contour turns their near-black, doubled by an inset ring so it still
+   shows against the dark callout. */
+.support-actions .support-coffee { background: #ffdd00; border-color: #ffdd00; color: #0d0c22; }
+.support-actions .support-coffee:hover { border-color: #0d0c22; box-shadow: inset 0 0 0 1px #0d0c22; color: #0d0c22; }
+
+.issue-note {
   background: rgba(88,166,255,.08);
   border: 1px solid rgba(88,166,255,.3);
   border-radius: var(--radius);
@@ -795,9 +831,13 @@ pre code { background: none; padding: 0; }
   margin-top: 10px;
   font-size: 13px;
   color: var(--text-secondary);
+  line-height: 1.55;
 }
 
-.contrib-note strong { color: var(--accent-blue); }
+.issue-note strong { color: var(--accent-blue); }
+
+/* Inline link inside the banner: undo the footer's block-link styling. */
+.issue-note a { display: inline; padding: 0; font-size: inherit; color: var(--accent-blue); font-weight: 600; }
 
 .footer-bottom {
   max-width: 1100px;
