@@ -25,16 +25,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (backToTop || homeFab) {
-    window.addEventListener('scroll', () => {
+    // Both buttons appear together once the reader has scrolled past the fold.
+    // Run once on load too, for pages opened part-way down (e.g. a search result).
+    const update = () => {
       const show = window.scrollY > 400;
       if (backToTop) backToTop.classList.toggle('visible', show);
       if (homeFab) homeFab.classList.toggle('visible', show);
-    });
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
   }
 
   if (backToTop) {
     backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+      // The button hides at the top of the page, so hand keyboard focus to the
+      // logo rather than leave it on a hidden control. preventScroll stops the
+      // focus change from cancelling the smooth scroll.
+      const logo = document.querySelector('.header-logo');
+      if (logo) logo.focus({ preventScroll: true });
     });
   }
 
