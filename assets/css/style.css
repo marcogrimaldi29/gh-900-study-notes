@@ -9,6 +9,7 @@
   --text-secondary: #8b949e;
   --text-muted: #6e7681;
   --accent-blue: #58a6ff;
+  --accent-blue-emphasis: #1f6feb;
   --accent-green: #3fb950;
   --accent-purple: #bc8cff;
   --accent-orange: #d29922;
@@ -1145,7 +1146,7 @@ tr:hover td { background: rgba(88,166,255,.03); }
 
 /* ── Print ── */
 @media print {
-  .site-header, .sidebar, .bg-animation, .code-rain, .page-nav { display: none; }
+  .site-header, .sidebar, .bg-animation, .code-rain, .page-nav, .back-to-top, .home-fab { display: none; }
   .main-content { margin-left: 0; padding: 20px; }
   body { background: #fff; color: #000; }
   .card { break-inside: avoid; border: 1px solid #ccc; }
@@ -1202,77 +1203,121 @@ tr:hover td { background: rgba(88,166,255,.03); }
   font-size: 18px;
 }
 
-/* ── Back to top ── */
-.back-to-top {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 19px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 3px 10px rgba(88,166,255,.35);
-  z-index: 90;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(12px) scale(.9);
-  transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .15s, opacity .25s ease;
-}
-
-.back-to-top.visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0) scale(1);
-}
-
-.back-to-top:hover {
-  transform: translateY(-3px) scale(1);
-  box-shadow: 0 6px 16px rgba(188,140,255,.45);
-}
-
-/* ── Floating Home button (sits above Back to top) ── */
+/* ── Floating buttons: Home + Back to top ──
+   Drawn as Primer icon buttons, the way GitHub draws icon-only controls:
+   Octicons, a 6px radius, a hairline border and a resting shadow, with no
+   bounce or lift. Back to top is the primary action of the pair, so it takes
+   GitHub's accent-emphasis blue; Home is a neutral default button. */
+.back-to-top,
 .home-fab {
   position: fixed;
-  bottom: 76px;
   right: 24px;
+  z-index: 90;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-default);
-  color: var(--text-primary);
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  line-height: 1;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  box-shadow: 0 1px 1px rgba(1,4,9,.4), 0 3px 6px rgba(1,4,9,.8);
+  cursor: pointer;
   text-decoration: none;
-  box-shadow: var(--shadow);
-  z-index: 90;
+  /* Hidden until the reader scrolls past the fold. Switching visibility once
+     the fade ends also takes the button out of the tab order while hidden. */
   opacity: 0;
-  pointer-events: none;
-  transform: translateY(12px) scale(.9);
-  transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .15s, border-color .15s, background .15s, opacity .25s ease;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity .2s cubic-bezier(.33,1,.68,1), transform .2s cubic-bezier(.33,1,.68,1),
+              visibility 0s linear .2s, background-color .15s, border-color .15s, color .15s;
 }
 
+.back-to-top {
+  bottom: 24px;
+  border-color: rgba(240,246,252,.1);
+  background: var(--accent-blue-emphasis);
+  color: #fff;
+}
+
+.home-fab { bottom: 72px; }
+
+.back-to-top svg,
+.home-fab svg { width: 16px; height: 16px; fill: currentColor; }
+
+.back-to-top.visible,
 .home-fab.visible {
   opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0) scale(1);
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
 }
 
+.back-to-top:hover { background: #388bfd; }
+.back-to-top:active { background: #1158c7; }
+
 .home-fab:hover {
-  transform: translateY(-3px) scale(1);
-  border-color: var(--accent-blue);
-  background: var(--bg-tertiary);
-  box-shadow: 0 6px 16px rgba(88,166,255,.35);
+  background: var(--border-default);
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
+}
+
+.home-fab:active { background: #282e33; }
+
+.back-to-top:focus-visible,
+.home-fab:focus-visible {
+  outline: 2px solid var(--accent-blue-emphasis);
+  outline-offset: 2px;
+}
+
+/* GitHub-style tooltip, built the way Primer's classic .tooltipped is: the
+   text comes from the button's aria-label and sits to its left. It appears
+   after a short delay on hover and straight away on keyboard focus. */
+.back-to-top::after,
+.home-fab::after {
+  content: attr(aria-label);
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 8px);
+  padding: .5em .75em;
+  border-radius: var(--radius);
+  background: var(--text-muted);
+  color: #fff;
+  font: 400 12px/1.5 var(--font-sans);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(4px, -50%);
+  transition: opacity .1s ease-in, transform .1s ease-in;
+}
+
+@media (hover: hover) {
+  .back-to-top:hover::after,
+  .home-fab:hover::after {
+    opacity: 1;
+    transform: translate(0, -50%);
+    transition-delay: .4s;
+  }
+}
+
+.back-to-top:focus-visible::after,
+.home-fab:focus-visible::after {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+/* Phones: pull the stack closer to the edge, in step with the tighter header */
+@media (max-width: 480px) {
+  .back-to-top, .home-fab { right: 16px; }
+  .back-to-top { bottom: 16px; }
+  .home-fab { bottom: 64px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .back-to-top, .home-fab { transform: none; transition: none; }
+  .back-to-top::after, .home-fab::after { transition: none; }
 }
