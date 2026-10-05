@@ -1205,9 +1205,10 @@ tr:hover td { background: rgba(88,166,255,.03); }
 
 /* ── Floating buttons: Home + Back to top ──
    Drawn as Primer icon buttons, the way GitHub draws icon-only controls:
-   Octicons, a 6px radius, a hairline border and a resting shadow, with no
-   bounce or lift. Back to top is the primary action of the pair, so it takes
-   GitHub's accent-emphasis blue; Home is a neutral default button. */
+   Octicons, a 6px radius, a hairline border and a resting shadow. Back to top
+   is the primary action of the pair, so it takes GitHub's accent-emphasis
+   blue; Home is a neutral default button. On hover the colour, border and
+   shadow ease together with a 2px lift. */
 .back-to-top,
 .home-fab {
   position: fixed;
@@ -1226,13 +1227,15 @@ tr:hover td { background: rgba(88,166,255,.03); }
   box-shadow: 0 1px 1px rgba(1,4,9,.4), 0 3px 6px rgba(1,4,9,.8);
   cursor: pointer;
   text-decoration: none;
-  /* Hidden until the reader scrolls past the fold. Switching visibility once
-     the fade ends also takes the button out of the tab order while hidden. */
+  /* Hidden until the reader scrolls past the fold. visibility only flips to
+     hidden once the fade has finished, and keeps the hidden button out of
+     the tab order. */
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
-  transition: opacity .2s cubic-bezier(.33,1,.68,1), transform .2s cubic-bezier(.33,1,.68,1),
-              visibility 0s linear .2s, background-color .15s, border-color .15s, color .15s;
+  transition-property: opacity, visibility, transform, background-color, border-color, color, box-shadow;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.33,1,.68,1);
 }
 
 .back-to-top {
@@ -1252,19 +1255,31 @@ tr:hover td { background: rgba(88,166,255,.03); }
   opacity: 1;
   visibility: visible;
   transform: none;
-  transition-delay: 0s;
 }
 
-.back-to-top:hover { background: #388bfd; }
+/* Hover-capable pointers only, so a tap on a phone doesn't leave a button
+   stuck in its hover state. */
+@media (hover: hover) {
+  .back-to-top.visible:hover,
+  .home-fab.visible:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(1,4,9,.4), 0 8px 16px rgba(1,4,9,.6);
+  }
+
+  .back-to-top:hover { background: #388bfd; }
+
+  .home-fab:hover {
+    background: var(--border-default);
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+}
+
+.back-to-top.visible:active,
+.home-fab.visible:active { transform: none; }
+
 .back-to-top:active { background: #1158c7; }
-
-.home-fab:hover {
-  background: var(--border-default);
-  border-color: var(--text-secondary);
-  color: var(--text-primary);
-  text-decoration: none;
-}
-
 .home-fab:active { background: #282e33; }
 
 .back-to-top:focus-visible,
@@ -1291,7 +1306,7 @@ tr:hover td { background: rgba(88,166,255,.03); }
   pointer-events: none;
   opacity: 0;
   transform: translate(4px, -50%);
-  transition: opacity .1s ease-in, transform .1s ease-in;
+  transition: opacity .15s ease-out, transform .15s ease-out;
 }
 
 @media (hover: hover) {
@@ -1318,6 +1333,12 @@ tr:hover td { background: rgba(88,166,255,.03); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .back-to-top, .home-fab { transform: none; transition: none; }
-  .back-to-top::after, .home-fab::after { transition: none; }
+  /* Keep the colour and opacity fades, which aren't motion; drop the
+     slide-in, the hover lift and the tooltip nudge. */
+  .back-to-top,
+  .home-fab,
+  .back-to-top.visible:hover,
+  .home-fab.visible:hover { transform: none; }
+  .back-to-top::after,
+  .home-fab::after { transform: translate(0, -50%); }
 }
