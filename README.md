@@ -51,7 +51,7 @@ pie title Exam Domain Weights of the GH-900 (official ranges)
 | 3 | Collaborate using GitHub | **10–15%** | Issues, pull requests, discussions, notifications, Gists, Wikis, Pages |
 | 4 | Apply modern development practices | **10–15%** | GitHub Actions, Copilot, Codespaces, dev containers, github.dev |
 | 5 | Manage projects with GitHub | **5–10%** | Projects & layouts, labels, milestones, workflows, insights |
-| 6 | Understand privacy, security & administration | **10–15%** | 2FA & passkeys, roles, EMUs, visibility, branch protection |
+| 6 | Understand privacy, security & administration | **10–15%** | 2FA & passkeys, roles, SAML SSO, SCIM & team sync, EMUs, visibility, branch protection |
 | 7 | Explore the GitHub community | **5–10%** | Open source, Sponsors, Marketplace, InnerSource, forks, templates |
 
 > 🔑 **Git & GitHub basics is the single largest domain (25–30%)** — master version control, the Git-vs-GitHub distinction, and the GitHub Flow first.
@@ -100,12 +100,12 @@ gh-900-study-notes/
 
 | Page | Topics Covered |
 |------|---------------|
-| [🐙 Git & GitHub Basics](https://marcogrimaldi29.com/gh-900-study-notes/git-github-basics/) | Version control, Git vs. GitHub, repos/commits/branches, accounts, GitHub Flow, Markdown, Desktop & Mobile |
+| [🐙 Git & GitHub Basics](https://marcogrimaldi29.com/gh-900-study-notes/git-github-basics/) | Version control, Git vs. GitHub, repos/commits/branches, accounts & plans (Free, Pro, Team, Enterprise), GitHub Flow, Markdown, Desktop & Mobile |
 | [📚 GitHub Repositories](https://marcogrimaldi29.com/gh-900-study-notes/repositories/) | Repo structure & key files, templates vs. forks, managing files, insights, stars, maintenance |
 | [💬 Collaboration](https://marcogrimaldi29.com/gh-900-study-notes/collaboration/) | Issues, PRs, discussions, linking & closing keywords, templates, notifications, Gists/Wikis/Pages |
 | [🚀 Modern Development](https://marcogrimaldi29.com/gh-900-study-notes/modern-development/) | Actions, Copilot (agents & plans), Codespaces & dev containers, github.dev |
 | [📋 Project Management](https://marcogrimaldi29.com/gh-900-study-notes/project-management/) | Projects & layouts, labels, milestones, built-in workflows, saved replies, insights |
-| [🔐 Privacy, Security & Admin](https://marcogrimaldi29.com/gh-900-study-notes/security-administration/) | 2FA & passkeys, repo/org roles, EMUs, visibility, branch protection, teams |
+| [🔐 Privacy, Security & Admin](https://marcogrimaldi29.com/gh-900-study-notes/security-administration/) | 2FA & passkeys, repo/org roles, SAML SSO, SCIM & team sync, EMUs, visibility, branch protection, teams |
 | [🌐 GitHub Community](https://marcogrimaldi29.com/gh-900-study-notes/github-community/) | Open source, Sponsors, following, Marketplace, InnerSource, forks & discoverability |
 | [💡 Exam Tips & Caveats](https://marcogrimaldi29.com/gh-900-study-notes/exam-tips/) | Logistics, domain weights, high-yield facts, common traps, 2-week study plan |
 
@@ -146,7 +146,7 @@ These notes are hosted on **GitHub Pages** and published as a companion website:
 
 👉 **[🐙 GH-900 Study Notes](https://marcogrimaldi29.com/gh-900-study-notes/)**
 
-The site is a dependency-free front-end (HTML, CSS, vanilla JavaScript) with a **GitHub-dark design system**, a per-domain sidebar, in-page tables of contents, and mobile-friendly navigation. Content is organized by the official skills measured and is a structured, exam-focused summary based on the official [GH-900 Study Guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900) — every claim links to Microsoft Learn or GitHub Docs.
+The site is a dependency-free front-end (HTML, CSS, vanilla JavaScript) with a **GitHub-dark design system**, a per-domain sidebar, in-page tables of contents, **site-wide search** (`Ctrl+K` or `/`) that jumps straight to the matching section, and mobile-friendly navigation. Content is organized by the official skills measured and is a structured, exam-focused summary based on the official [GH-900 Study Guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900) — every claim links to Microsoft Learn or GitHub Docs.
 
 ---
 
