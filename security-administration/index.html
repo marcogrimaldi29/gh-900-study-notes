@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy, Security &amp; Administration | GH-900 Study Notes</title>
-  <meta name="description" content="GH-900 study notes: 2FA and passkeys, permissions and roles, Enterprise Managed Users, org Copilot policy, visibility, branch protection, and org management.">
+  <meta name="description" content="GH-900 study notes: 2FA and passkeys, permissions and roles, SAML SSO, SCIM provisioning, team synchronization, Enterprise Managed Users, org Copilot policy, visibility, branch protection, and org management.">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/images/teal-sunset-no-bg.png">
@@ -26,6 +26,11 @@
     </a>
     <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
     <nav class="header-nav">
+      <button type="button" class="search-btn" id="search-open" aria-label="Search the study notes" title="Search (Ctrl+K)">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/></svg>
+        <span class="search-label">Search</span>
+        <kbd class="search-kbd">Ctrl K</kbd>
+      </button>
       <a class="star-btn" href="https://github.com/marcogrimaldi29/gh-900-study-notes" target="_blank" rel="noopener" title="Star this repo on GitHub">
         <span class="star-emoji">&#11088;</span>
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
@@ -91,7 +96,7 @@
     </div>
 
     <h1>Understand Privacy, Security &amp; Administration</h1>
-    <p class="lead">This skill area is <strong>10&ndash;15%</strong> of the exam. It covers securing accounts with 2FA and passkeys, repository and organization permissions and roles, Enterprise Managed Users and org-wide Copilot policy, repository visibility and branch protection, and managing organization settings, teams, and roles.</p>
+    <p class="lead">This skill area is <strong>10&ndash;15%</strong> of the exam. It covers securing accounts with 2FA and passkeys, repository and organization permissions and roles, identity integration with SAML SSO, SCIM, and team synchronization, Enterprise Managed Users and org-wide Copilot policy, repository visibility and branch protection, and managing organization settings, teams, and roles.</p>
 
     <div class="disclaimer">
       <strong>Disclaimer:</strong> These are personal study notes for learning purposes only. Always verify against the <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900" target="_blank" rel="noopener">official study guide</a>.
@@ -105,6 +110,12 @@
           <ul>
             <li><a href="#repo-roles">Repository Roles</a></li>
             <li><a href="#org-roles">Organization Roles</a></li>
+          </ul>
+        </li>
+        <li><a href="#identity-provisioning">SAML SSO, SCIM &amp; Team Sync</a>
+          <ul>
+            <li><a href="#scim">SCIM Provisioning</a></li>
+            <li><a href="#team-sync">Team Synchronization</a></li>
           </ul>
         </li>
         <li><a href="#emu-copilot">EMUs &amp; Org Copilot Policy</a></li>
@@ -157,11 +168,76 @@
       </ul>
     </div>
 
+    <h2 id="identity-provisioning">Identity &amp; Access: SAML SSO, SCIM &amp; Team Sync</h2>
+    <p>Companies connect GitHub to their <strong>identity provider (IdP)</strong>, such as Microsoft Entra ID or Okta, so that access follows the employee directory. Three related features do this, and each solves a <em>different</em> problem. All of them need <strong>GitHub Enterprise</strong> (Cloud, or SAML-enabled Enterprise Server for SCIM).</p>
+
+    <div class="table-wrap"><table>
+      <thead>
+        <tr><th>Feature</th><th>Question it answers</th><th>What it does</th><th>Where it's configured (Enterprise Cloud)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>SAML single sign-on (SSO)</strong></td><td>&ldquo;Who are you?&rdquo; &mdash; <em>authentication</em></td><td>Members must sign in through the IdP before reaching the org's resources. Each GitHub account is tied to an IdP account through a <strong>linked identity</strong>.</td><td>Organization or enterprise</td></tr>
+        <tr><td><strong>SCIM</strong></td><td>&ldquo;Should you have access at all?&rdquo; &mdash; <em>provisioning</em></td><td>The IdP automatically grants, updates, and <strong>removes</strong> access as people join, move, or leave the company.</td><td>Organization (personal accounts) or enterprise (EMU only)</td></tr>
+        <tr><td><strong>Team synchronization</strong></td><td>&ldquo;Which teams are you in?&rdquo; &mdash; <em>group membership</em></td><td>Connects IdP groups to GitHub teams, so group membership changes are reflected on the team automatically.</td><td>Organization (Entra ID or Okta) or enterprise (Entra ID only)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 id="scim">SCIM Provisioning</h3>
+    <p><a href="https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-saml-single-sign-on-for-your-organization/about-scim-for-organizations" target="_blank" rel="noopener">SCIM</a> (<strong>System for Cross-domain Identity Management</strong>) is an open standard that lets administrators automate the exchange of user identity information between systems. SAML proves who someone is when they sign in; SCIM manages the <em>lifecycle</em> of their access.</p>
+    <div class="skill-section">
+      <h4>How It Works by Deployment</h4>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Deployment</th><th>What SCIM manages</th><th>Supported IdPs</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Organization</strong> (Enterprise Cloud, personal accounts)</td><td>Adds people to the organization and, when they are deprovisioned in the IdP, <strong>automatically removes them from the organization</strong>. Their personal GitHub account itself is untouched.</td><td>Microsoft Entra ID, Okta, OneLogin</td></tr>
+          <tr><td><strong>Enterprise Managed Users</strong> (Enterprise Cloud)</td><td><strong>Creates</strong>, updates, suspends, and reactivates the managed user accounts themselves. SCIM is mandatory for EMU.</td><td>Partner IdPs: Entra ID (SAML or OIDC), Okta, PingFederate. Other SCIM 2.0 IdPs can use the REST API</td></tr>
+          <tr><td><strong>Enterprise Server</strong> (self-hosted)</td><td>Creates, updates, and suspends user accounts on the instance when SAML SSO is in use.</td><td>Entra ID, Okta (PingFederate in preview)</td></tr>
+        </tbody>
+      </table></div>
+      <h4>Key Rules</h4>
+      <ul>
+        <li><strong>SAML SSO is a prerequisite</strong> for SCIM.</li>
+        <li>Without EMU, SCIM is configured at the <strong>organization</strong> level, never the enterprise level. You can't configure SCIM on an enterprise account unless it was created for Enterprise Managed Users.</li>
+        <li>Once SCIM is enabled, membership changes should be <strong>driven from the IdP</strong>. Someone invited by hand on GitHub bypasses SCIM, so the IdP can't deprovision them later.</li>
+      </ul>
+    </div>
+
+    <h3 id="team-sync">Team Synchronization</h3>
+    <p><a href="https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-saml-single-sign-on-for-your-organization/managing-team-synchronization-for-your-organization" target="_blank" rel="noopener">Team synchronization</a> links a GitHub team to one or more IdP groups. When someone is added to or removed from the group in the IdP, the change is reflected on the GitHub team automatically, with no manual updates or custom scripts.</p>
+    <div class="skill-section">
+      <h4>Requirements &amp; Behavior</h4>
+      <ul>
+        <li>Requires <strong>GitHub Enterprise Cloud</strong> with <strong>SAML SSO</strong> enabled. Each user needs a <strong>linked SAML identity</strong>.</li>
+        <li>Supported IdPs: <strong>Microsoft Entra ID</strong> (commercial tenants) and <strong>Okta</strong> for organizations. Enterprise-wide team sync works with <strong>Entra ID only</strong>.</li>
+        <li>You can connect <strong>up to five IdP groups</strong> to a single GitHub team.</li>
+        <li>Once a team is synced, its membership <strong>can't be managed on GitHub or through the API</strong>. It is managed in the IdP, and existing team members who aren't in the connected groups are removed.</li>
+        <li><strong>Parent teams</strong> can't be synchronized with IdP groups.</li>
+        <li>It is <strong>not a provisioning service</strong>. It doesn't invite people to the organization, and a user is only added to a team if they are <em>already an organization member</em>. Use SCIM to get people into the org.</li>
+      </ul>
+      <h4>Team Sync vs. IdP Groups with Enterprise Managed Users</h4>
+      <p>EMU enterprises don't use team synchronization. Instead they <a href="https://docs.github.com/en/enterprise-cloud@latest/admin/managing-iam/provisioning-user-accounts-with-scim/managing-team-memberships-with-identity-provider-groups" target="_blank" rel="noopener">manage team memberships with IdP groups</a> sent over SCIM. The idea is the same, but the rules differ:</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th></th><th>Team synchronization</th><th>IdP groups (EMU)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Accounts</strong></td><td>Personal accounts with SAML SSO</td><td>Managed user accounts</td></tr>
+          <tr><td><strong>IdP groups per team</strong></td><td>Up to 5</td><td>1</td></tr>
+          <tr><td><strong>Adds users to the org?</strong></td><td>No, they must already be members</td><td>Yes, automatically</td></tr>
+          <tr><td><strong>Edit membership on GitHub?</strong></td><td>No, it's managed in the IdP</td><td>No, it's managed in the IdP</td></tr>
+          <tr><td><strong>Nested teams</strong></td><td>Parent teams can't sync</td><td>Connected teams can't be a parent or a child</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-title">&#9888; Exam Tip — SAML vs. SCIM vs. Team Sync</div>
+      <p>Match the scenario to the feature: &ldquo;require employees to sign in with company credentials&rdquo; &rarr; <strong>SAML SSO</strong>. &ldquo;Remove access automatically when someone leaves the company&rdquo; &rarr; <strong>SCIM</strong>. &ldquo;Keep GitHub team membership in step with Entra ID or Okta groups&rdquo; &rarr; <strong>team synchronization</strong>. &ldquo;The company must own and control the accounts themselves&rdquo; &rarr; <strong>Enterprise Managed Users</strong>.</p>
+    </div>
+
     <h2 id="emu-copilot">Enterprise Managed Users &amp; Org Copilot Policy</h2>
     <div class="skill-section">
       <h4>Enterprise Managed Users (EMUs)</h4>
       <ul>
-        <li>With <strong>EMUs</strong>, user accounts are <strong>provisioned and fully controlled by the enterprise</strong> through its identity provider (IdP) via <strong>SAML/OIDC SSO and SCIM</strong>.</li>
+        <li>With <strong>EMUs</strong>, user accounts are <strong>provisioned and fully controlled by the enterprise</strong> through its identity provider (IdP) via <strong>SAML/OIDC SSO and <a href="#scim">SCIM</a></strong>.</li>
         <li>Managed users can only interact within the enterprise — they can't push to public repos, use personal repos, or collaborate outside it — giving the company tight control over identity and data.</li>
         <li>Contrast with standard SSO, where members bring their existing personal GitHub accounts.</li>
       </ul>
@@ -219,6 +295,14 @@
       <li>
         <a href="https://docs.github.com/en/enterprise-cloud@latest/admin/managing-iam/understanding-iam-for-enterprises/about-enterprise-managed-users" target="_blank" rel="noopener">About Enterprise Managed Users (GitHub Docs)</a>
         <span class="resource-desc">How EMUs centralize identity via an IdP with SCIM.</span>
+      </li>
+      <li>
+        <a href="https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-saml-single-sign-on-for-your-organization/about-scim-for-organizations" target="_blank" rel="noopener">About SCIM for Organizations (GitHub Docs)</a>
+        <span class="resource-desc">How SCIM provisions and deprovisions organization members, and which IdPs support it.</span>
+      </li>
+      <li>
+        <a href="https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-saml-single-sign-on-for-your-organization/managing-team-synchronization-for-your-organization" target="_blank" rel="noopener">Managing Team Synchronization (GitHub Docs)</a>
+        <span class="resource-desc">Requirements, supported IdPs, and limits for syncing teams with IdP groups.</span>
       </li>
       <li>
         <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches" target="_blank" rel="noopener">About Protected Branches (GitHub Docs)</a>
@@ -295,5 +379,6 @@
   <a href="../" class="home-fab" aria-label="Home" title="Home">&#127968;</a>
   <button class="back-to-top" aria-label="Back to top">&#128285;</button>
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/search.js"></script>
 </body>
 </html>

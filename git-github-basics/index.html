@@ -26,6 +26,11 @@
     </a>
     <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
     <nav class="header-nav">
+      <button type="button" class="search-btn" id="search-open" aria-label="Search the study notes" title="Search (Ctrl+K)">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/></svg>
+        <span class="search-label">Search</span>
+        <kbd class="search-kbd">Ctrl K</kbd>
+      </button>
       <a class="star-btn" href="https://github.com/marcogrimaldi29/gh-900-study-notes" target="_blank" rel="noopener" title="Star this repo on GitHub">
         <span class="star-emoji">&#11088;</span>
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
@@ -239,11 +244,22 @@
 
     <div class="skill-section">
       <h4>Plans (High Level)</h4>
-      <ul>
-        <li><strong>GitHub Free</strong> — unlimited public and private repos, core features, for individuals and organizations</li>
-        <li><strong>GitHub Team</strong> — paid per-user plan for organizations; adds advanced collaboration and more Actions/Packages allowances</li>
-        <li><strong>GitHub Enterprise</strong> — adds enterprise-grade security, compliance, SAML SSO, and centralized administration. Available as <strong>Enterprise Cloud</strong> (hosted) or <strong>Enterprise Server</strong> (self-hosted)</li>
-      </ul>
+      <p>Per <a href="https://docs.github.com/en/get-started/learning-about-github/githubs-plans" target="_blank" rel="noopener">GitHub's plans</a>, there are four tiers. Two are for <strong>personal accounts</strong> (Free, Pro) and three for <strong>organizations</strong> (Free, Team, Enterprise).</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Plan</th><th>For</th><th>What it adds</th><th>Included allowances*</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GitHub Free</strong></td><td>Personal accounts &amp; organizations</td><td>Unlimited public and private repositories, with a limited feature set on private repos. Community support only.</td><td>2,000 Actions min/month &middot; 500 MB Packages</td></tr>
+          <tr><td><strong>GitHub Pro</strong></td><td>Personal accounts</td><td>Everything in Free, plus advanced tools for <em>private</em> repos — <strong>protected branches, required reviewers, code owners, wikis</strong>, and repository insights/graphs — and email support.</td><td>3,000 Actions min/month &middot; 2 GB Packages</td></tr>
+          <tr><td><strong>GitHub Team</strong></td><td>Organizations</td><td>The same advanced private-repo tools as Pro, for every org member, plus <strong>team access controls</strong>, team pull request reviewers, and email support. Paid per user.</td><td>3,000 Actions min/month &middot; 2 GB Packages</td></tr>
+          <tr><td><strong>GitHub Enterprise</strong></td><td>Organizations &amp; enterprises</td><td>Everything in Team, plus <strong>SAML SSO</strong>, access provisioning, enterprise accounts that manage multiple organizations, internal repositories, compliance controls, and enterprise support. Available as <strong>Enterprise Cloud</strong> (hosted) or <strong>Enterprise Server</strong> (self-hosted).</td><td>Enterprise Cloud: 50,000 Actions min/month &middot; 50 GB Packages</td></tr>
+        </tbody>
+      </table></div>
+      <p class="table-note">* Allowances apply to private repositories; GitHub Actions on standard GitHub-hosted runners is free for public repositories. Figures change over time, so check the plans page before relying on exact numbers.</p>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-title">&#128161; Memory Hook — Pro vs. Team</div>
+      <p><strong>Pro</strong> and <strong>Team</strong> unlock the same advanced private-repo features (protected branches, required reviewers, code owners, wikis). The difference is <em>who</em> they are for: <strong>Pro is for one person's personal account</strong>; <strong>Team is for an organization</strong> and adds team-based access control. Need SAML SSO or multiple organizations under one roof? That's <strong>Enterprise</strong>.</p>
     </div>
 
     <h3 id="github-flow">The GitHub Flow</h3>
@@ -397,5 +413,6 @@
   <a href="../" class="home-fab" aria-label="Home" title="Home">&#127968;</a>
   <button class="back-to-top" aria-label="Back to top">&#128285;</button>
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/search.js"></script>
 </body>
 </html>
