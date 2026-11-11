@@ -162,7 +162,7 @@ The site is continuously updated and based on my personal study notes. If you ha
 
 ## 🐞 Spotted a Mistake?
 
-GitHub ships new features fast, so if something here is wrong or out of date, please [report an issue](https://github.com/marcogrimaldi29/gh-900-study-notes/issues).
+GitHub ships new features fast, so if something here is wrong or out of date, please [report an issue](https://github.com/marcogrimaldi29/gh-900-study-notes/issues). The [contributing guide](.github/CONTRIBUTING.md) explains what makes a report quick to fix and what's out of scope.
 
 ---
 
