@@ -46,3 +46,5 @@ If you can't use GitHub, send me a private message on [LinkedIn](https://www.lin
 ## ⏱️ What to Expect
 
 I maintain this repo on my own, so responses are best effort. I'll confirm I've received your report, keep you updated in the private report while I look into it, and let you know when it's fixed. If you'd like to be credited, say so and I'll credit you in the security advisory or the fix.
+
+Dependabot alerts are turned on for this repo, so a known vulnerability in an action the workflow uses is usually flagged without a report.
